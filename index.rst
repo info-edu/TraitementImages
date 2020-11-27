@@ -19,6 +19,5 @@ Cette page vous permettra de découvrir comment les images sont représentées d
    colab
    sequence
    testsection
-   0_MonPremierNotebook
 
 
