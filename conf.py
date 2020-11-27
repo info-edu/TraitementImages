@@ -66,4 +66,13 @@ html_theme = "sphinx_rtd_theme"
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
+# This is processed by Jinja2 and inserted before each notebook
+#https://mybinder.org/v2/gh/info-edu/TraitementImages/master?filepath=ImageProc/ExoNotebooks/0_MonPremierNotebook.ipynb
+nbsphinx_prolog = """
+{% set docname = env.doc2path(env.docname, base=None) %}
 
+.. only:: html
+
+    Go there: https://mybinder.org/v2/gh/info-edu/TraitementImages/master?filepath={{ docname }}
+
+"""
