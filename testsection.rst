@@ -10,6 +10,7 @@ Blabla
 
 .. toctree::
    me
+   me3
    soussectiontest
 
 

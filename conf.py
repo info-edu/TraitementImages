@@ -33,7 +33,7 @@ release = '1.0'
 extensions = [
 	"sphinx_rtd_theme",
 	"recommonmark",
-	"nbsphinx"
+	"nbsphinx",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -71,8 +71,11 @@ html_static_path = ['_static']
 nbsphinx_prolog = """
 {% set docname = env.doc2path(env.docname, base=None) %}
 
-.. only:: html
+Lancer la version interactive sur Jupyter: |binderlink|
 
-    Go there: https://mybinder.org/v2/gh/info-edu/TraitementImages/master?filepath={{ docname }}
+.. |binderlink| image:: https://mybinder.org/badge_logo.svg
+   :target: https://mybinder.org/v2/gh/info-edu/TraitementImages/master?filepath={{ docname }}
+
+----
 
 """
