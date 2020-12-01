@@ -24,6 +24,7 @@ pip3 install -U sphinx-rtd-theme
 
 pip3 install -U recommonmark
 pip3 install -U nbsphinx
+pip3 install -U pandoc
 
 #####################
 # DECLARE VARIABLES #
