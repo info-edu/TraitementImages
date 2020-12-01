@@ -74,10 +74,10 @@ nbsphinx_prolog = """
 Lancer la version interactive sur : |binderlink| |colablink|
 
 .. |binderlink| image:: https://mybinder.org/badge_logo.svg
-   :target: https://mybinder.org/v2/gh/info-edu/TraitementImages/master?filepath={{ docname }}
+   :target: https://mybinder.org/v2/gh/info-edu/TraitementImages/gh-pages?filepath={{ docname }}
 
 .. |colablink| image:: https://colab.research.google.com/assets/colab-badge.svg
-   :target: https://colab.research.google.com/github/info-edu/TraitementImages/blob/master/{{ docname }}
+   :target: https://colab.research.google.com/github/info-edu/TraitementImages/blob/gh-pages/{{ docname }}
 
 ----
 
