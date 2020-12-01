@@ -22,6 +22,8 @@ apt-get -y install git rsync python3-pip
 pip3 install -U sphinx
 pip3 install -U sphinx-rtd-theme
 
+pip3 install -U recommonmark
+
 #####################
 # DECLARE VARIABLES #
 #####################
