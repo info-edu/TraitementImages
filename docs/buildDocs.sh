@@ -25,7 +25,7 @@ pip3 install -U sphinx-rtd-theme
 pip3 install -U recommonmark
 pip3 install -U nbsphinx
 #pip3 install -U pandoc
-sudo apt-get install -y pandoc
+apt-get -y  install pandoc
 
 #####################
 # DECLARE VARIABLES #
