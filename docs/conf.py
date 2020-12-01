@@ -77,7 +77,7 @@ Lancer la version interactive sur : |binderlink| |colablink|
    :target: https://mybinder.org/v2/gh/info-edu/TraitementImages/master?filepath={{ docname }}
 
 .. |colablink| image:: https://colab.research.google.com/assets/colab-badge.svg
-   :target: https://colab.research.google.com/github/info-edu/info-edu.github.io/blob/master/{{ docname }}
+   :target: https://colab.research.google.com/github/info-edu/TraitementImages/blob/master/{{ docname }}
 
 ----
 
