@@ -23,6 +23,7 @@ pip3 install -U sphinx
 pip3 install -U sphinx-rtd-theme
 
 pip3 install -U recommonmark
+pip3 install -U nbsphinx
 
 #####################
 # DECLARE VARIABLES #
