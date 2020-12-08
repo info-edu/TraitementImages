@@ -1,9 +1,12 @@
 name: docs_pages_workflow
  
 # execute this workflow automatically when a we push to master
+#on:
+#  push:
+#    branches: [ master ]
 on:
-  push:
-    branches: [ master ]
+  schedule:
+    - cron:  '30 13 * * *'
  
 jobs:
  
