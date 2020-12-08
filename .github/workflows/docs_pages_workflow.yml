@@ -6,7 +6,7 @@ name: docs_pages_workflow
 #    branches: [ master ]
 on:
   schedule:
-    - cron:  '45 12 * * *'
+    - cron:  '2 13 * * *'
  
 jobs:
  
