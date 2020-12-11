@@ -43,7 +43,8 @@ export SOURCE_DATE_EPOCH=$(git log -1 --pretty=%ct)
 rm -rf build
 sphinx-build -b html docs build
 
-cp docs/requirements.txt build/
+mkdir build/.binder
+cp docs/requirements.txt build/.binder/
 
 #######################
 # Update GitHub Pages #
