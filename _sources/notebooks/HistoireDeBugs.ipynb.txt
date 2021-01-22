@@ -1,0 +1,228 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Histoire de bugs\n",
+    "\n",
+    "## Objectif et durée\n",
+    "\n",
+    "L'objectif de cette séquence est de corriger des erreurs ou mauvaises pratqiue communément vues en classe. Il est possible de réaliser cette séquence en une période."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Introduction\n",
+    "\n",
+    "Je vous présente Bob, un jeune élève qui apprend l'informatique. Il manquait probablement un peu de sommeil car il a réussi à écrire une série un notebook truffé de bugs. Vous allez aider Bob à distance en corrigeant son code et en lui expliquant quel était son problème en dessous de la cellule bogguée. Attention, c'était une dure journée pour Bob et il pourra y avoir plusieurs bugs par cellule. Nous partirons de la cellule de code suivante qui n'est pas bogguée."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import numpy as np # Pour manipuler des tableaux de nombres\n",
+    "import matplotlib.pyplot as plt # pour afficher des images\n",
+    "\n",
+    "def creer_image(hauteur,largeur):\n",
+    "    return np.zeros((hauteur,largeur))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Création d'image\n",
+    "\n",
+    "Bob veut créer une image et la modifier pour que le premier pixel soit blanc, voici ce qu'il a écrit:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "NameError",
+     "evalue": "name 'img' is not defined",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+      "\u001b[0;32m<ipython-input-2-e346498b1b2b>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[1;32m      1\u001b[0m \u001b[0mcreer_image\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;36m8\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;36m12\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 2\u001b[0;31m \u001b[0mimg\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;36m0\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;36m0\u001b[0m\u001b[0;34m]\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0;36m255\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+      "\u001b[0;31mNameError\u001b[0m: name 'img' is not defined"
+     ]
+    }
+   ],
+   "source": [
+    "creer_image(8,12)\n",
+    "img[0,0] = 255"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Définition de fonctions utiles\n",
+    "Il souhaite maintenant définir deux fonctions. Une qui affiche la taille d'une image donnée en argument, et l'autre qui affiche l'image donnée en argument, avec ce code:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "SyntaxError",
+     "evalue": "invalid syntax (<ipython-input-3-f63f1ae0c3d0>, line 2)",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;36m  File \u001b[0;32m\"<ipython-input-3-f63f1ae0c3d0>\"\u001b[0;36m, line \u001b[0;32m2\u001b[0m\n\u001b[0;31m    print(\"Largeur x hauteur = \"image.shape[1]\" x \"image.shape[0])\u001b[0m\n\u001b[0m                                ^\u001b[0m\n\u001b[0;31mSyntaxError\u001b[0m\u001b[0;31m:\u001b[0m invalid syntax\n"
+     ]
+    }
+   ],
+   "source": [
+    "def printSize(image):\n",
+    "    print(\"Largeur x hauteur = \"image.shape[1]\" x \"image.shape[0])\n",
+    "    \n",
+    "def montrer_image(image):\n",
+    "    plt.imshow(img, cmap='gray',vmin = 0, vmax = 255)\n",
+    "return plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Modification d'une ligne de l'image\n",
+    "Bob veut maintenant que la première ligne d'une image de 10x10 pixels soit blanche et le reste noir. Il écrit un code qui ne fait pas d'erreur mais qui ne fait pas ce qu'il veut. Voici son code:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "img = np.zeros((10, 10))\n",
+    "img[0,0:-1] = 255"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Compter les pixels blancs\n",
+    "Bob écrit une fonction qui permet de compter les pixels ayant une valeur de 255 dans une image. Il écrit cette fonction qui marche mais son enseignant lui dit que ça n'est pas bon..."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "9\n"
+     ]
+    }
+   ],
+   "source": [
+    "def comptePixel255(image):\n",
+    "    var1 = 0\n",
+    "    for y in range(image.shape[0]):\n",
+    "        for x in range(image.shape[1]):\n",
+    "            niveau_gris = image[y,x]\n",
+    "            if niveau_gris == 255:\n",
+    "                var1 += 1\n",
+    "    return var1\n",
+    "\n",
+    "print(comptePixel255(img))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Retournement horizontal\n",
+    "\n",
+    "Enfin Bob veut écrire une fonction qui fait un retournement horizontal d'une image donnée en argument de la fonction. Encore une fois, Bob ne voit pas de bug mais son enseignant n'est tout de même pas satisfait. Bob n'oublie pas que c'est pour son bien que son enseignant pinaille parfois :)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "image/png": "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\n",
+      "text/plain": [
+       "<Figure size 432x288 with 1 Axes>"
+      ]
+     },
+     "metadata": {
+      "needs_background": "light"
+     },
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "def flip(img):\n",
+    "    img_flip = np.zeros((10,10))\n",
+    "    for y in range(10):\n",
+    "        for x in range(10):\n",
+    "            img_flip[y,x] = img[y,-x-1]\n",
+    "    return img_flip\n",
+    "\n",
+    "# création de l'image à retourner\n",
+    "img = np.zeros((10, 10))\n",
+    "img[2,2] = 255\n",
+    "img[2,7] = 255\n",
+    "img[6,2] = 255\n",
+    "img[6,6:8] = 255\n",
+    "img[7,3:6] = 255\n",
+    "plt.imshow(img, cmap='gray',vmin = 0, vmax = 255)\n",
+    "plt.show()\n",
+    "\n",
+    "# flip\n",
+    "img_flip = flip(img)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.6"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}

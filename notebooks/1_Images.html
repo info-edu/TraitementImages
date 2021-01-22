@@ -1,0 +1,779 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Introduction aux images &mdash; Documentation TraitementImages 1.0</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="Histoire de bugs" href="HistoireDeBugs.html" />
+    <link rel="prev" title="Mon premier notebook" href="0_MonPremierNotebook.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> TraitementImages
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../notebooks.html">Python notebooks</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../sequence.html">Séquence d’activités</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="0_MonPremierNotebook.html">Mon premier notebook</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Introduction aux images</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Objectifs-et-durée">Objectifs et durée</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Utilisation-des-librairies-standards">Utilisation des librairies standards</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Accès-et-manipulation-des-pixels">Accès et manipulation des pixels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Accès-au-dernier,-avant-dernier…-élément-sur-un-axe">Accès au dernier, avant dernier… élément sur un axe</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Accès-et-manipulation-d’une-partie-de-l’image">Accès et manipulation d’une partie de l’image</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercice-7">Exercice 7</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="HistoireDeBugs.html">Histoire de bugs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_Cellules.html">Application aux sciences de la vie</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">TraitementImages</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<p>Lancer la version interactive sur : <a class="reference external" href="https://mybinder.org/v2/gh/info-edu/TraitementImages/gh-pages?filepath=notebooks/1_Images.ipynb"><img alt="binderlink" src="https://mybinder.org/badge_logo.svg" /></a> <a class="reference external" href="https://colab.research.google.com/github/info-edu/TraitementImages/blob/gh-pages/notebooks/1_Images.ipynb"><img alt="colablink" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<hr class="docutils" />
+<div class="section" id="Introduction-aux-images">
+<h1>Introduction aux images<a class="headerlink" href="#Introduction-aux-images" title="Lien permanent vers ce titre">¶</a></h1>
+<div class="section" id="Objectifs-et-durée">
+<h2>Objectifs et durée<a class="headerlink" href="#Objectifs-et-durée" title="Lien permanent vers ce titre">¶</a></h2>
+<p>L’objectif de ce cours est de vous familiariser aux bases du traitement d’images. L’objectif sera d’abord de découvrir de quelle manière les images sont généralement représentées de façon numérique en programmant des outils permettant de dessiner des motifs simples sur une image. Il permettra de déboucher sur des exercices de traitement du signal permettant d’aller jusqu’à résoudre des problèmes classiques en science de la vie. Il faudra compter environ 12 périodes pour le réaliser en classe.</p>
+</div>
+<div class="section" id="Utilisation-des-librairies-standards">
+<h2>Utilisation des librairies standards<a class="headerlink" href="#Utilisation-des-librairies-standards" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Pour manipuler des images et les visualiser sur un notebook, il est classique de commencer par utiliser deux librairies.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>import numpy as np # Pour manipuler des tableaux de nombres
+import matplotlib.pyplot as plt # pour afficher des images
+</pre></div>
+</div>
+</div>
+<p>Une image en niveaux de gris est une <strong>grille de valeurs sur deux dimensions</strong>. Chaque valeur de cette grille représente l’intensité lumineuse à une certaine abscisse et une certaine ordonnée. Commençons par définir une telle grille pleine de zéros (une iamge noire) grâce à la librairie numpy.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span># Creation d&#39;une image noire de taille hauteur x largeur
+# (ou plus précisément d&#39;un tableau de hauteur x largeur nombres tous égaux à zéros
+# c&#39;est comme une liste à deux dimensions)
+hauteur = 12
+largeur = 16
+img = np.zeros((hauteur,largeur))#.astype(np.int8)
+
+# Affichage du type de img
+print(&quot;type(img): &quot;+str(type(img)))
+# Affichage de la taille d&#39;une image
+print(&quot;img.shape: &quot;+str(img.shape))
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+type(img): &lt;class &#39;numpy.ndarray&#39;&gt;
+img.shape: (12, 16)
+</pre></div></div>
+</div>
+<p>Comme on le voit, la variable <em>img</em> est de type <strong>numpy.ndarray</strong> ce qui correspond à un tableau à N-dimensions, avec ici <em>N = 2</em>. Ce type vient avec certains attributs telle que <em>shape</em> qui nous donne sa taille, et des méthodes telles que <em>transpose()</em> qui nous permettent de retourner les axes x et y.</p>
+<p>La fonction <em>print()</em> accepte comme argument les <em>ndarray</em>, ce qui nous permettra de voir les valeurs qu’il y a dans notre image. Si on regarde bien le résultat, on voit que cela correspond à une liste de liste comme nous les avions vu dans les cours précédents.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>print(img)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]]
+</pre></div></div>
+</div>
+<p>Mais il sera bien évidement utile d’afficher l’image comme une image et non comme un tableau de valeurs. Malheureusement cela n’est pas offert par la librairie numpy. Cela fait sens en même temps car elle est dédiée au calcul numérique. Pour afficher une image on utilisera une librarie dédiée à la visualisation de donnée qui s’appelle <strong>matplotlib</strong> (celle déjà utilisée précédemment pour dessiner des graphiques) de cette manière:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span># Affichage de l&#39;image
+plt.imshow(img, cmap=&#39;gray&#39;,vmin = 0, vmax = 255)
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_1_Images_7_0.png" src="../_images/notebooks_1_Images_7_0.png" />
+</div>
+</div>
+<p>En traitement d’images il est standard de mettre l’origine de l’image en haut à gauche, comme pour les matrices en mathématiques. Comme on le voit dans cette figure c’est le cas ici. Remarquez également que les fonctions utilisées utilisent d’autres arguments que l’image. Pour l’instant retenons simplement qu’en utilisant ces arguments nous pourrons voir notre image en niveaux de gris.</p>
+<p>Remarquez également que la taille de l’image rendue par l’attribut shape a deux éléments qui sont mis entre parenthèses. On appelle cela un tuple. C’est un type similaire aux listes. On peut accéder aux deux éléments grâce aux crochets []. Par contre la particularité du tuple est que l’on ne pourra pas modifier son contenu.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span># Ex. 1
+# def creer_image
+# def printSize
+# def montrer_image
+
+# test des fonctions
+img = creer_image(20,30)
+</pre></div>
+</div>
+</div>
+<p>## Représentation des images au format numérique</p>
+<p>Les images numériques sont représentées de deux façons: soit elles sont pixelisées, soit elles sont au format vectoriel. Ici nous nous intéresserons au <strong>format pixel</strong>. Les images pixelisées sont découpées sous forme d’une grille de pixels, et pour chaque pixel le niveau de gris ou la couleur est définie à l’aide d’un ou respectivement 3 nombres. Ces nombres sont généralement définis en 8 bits (8 zéros ou uns), ce qui donne un nombre pouvant aller de 0 à 255 compris.</p>
+<p>Pour commencer nous travaillerons avec des images en niveaux de gris. Dans ce cas, chaque pixel est défini par un nombre entier allant de 0 à 255. 0 correspondant au noir et 255 au blanc.</p>
+</div>
+<div class="section" id="Accès-et-manipulation-des-pixels">
+<h2>Accès et manipulation des pixels<a class="headerlink" href="#Accès-et-manipulation-des-pixels" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Pour accéder aux valeurs d’un pixel dans une image, c’est à dire aux valeurs dans un tableau à 2 dimensions, on utilise le même outil que pour les listes: on va utiliser des indexes. Avec une liste à une dimension <em>ma_liste</em>, on accédera au premier élément grâce aux crochets et à l’index 0 en écrivant <em>ma_liste[0]</em>. Pour accéder à un élément d’une image, il faudra spécifier à quelle ligne et quelle colonne nous voulons accéder, par exemple pour accéder au pixel en haut à gauche de l’image <em>img</em>
+on utilisera l’instruction <em>img[0,0]</em>. Comme pour toutes les variables, il sera possible d’accéder à cet élément mais aussi de l’affecter:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span># accès
+print(img[0,0])
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0.0
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span># affectation
+img[0,0] = 255
+
+# affichage du résultat
+print(img[0,0])
+
+plt.imshow(img, cmap=&#39;gray&#39;,vmin = 0, vmax = 255)
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+255.0
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_1_Images_13_1.png" src="../_images/notebooks_1_Images_13_1.png" />
+</div>
+</div>
+<p>Et bien sur il est également possible de faire des opérations sur chaque valeur de pixel mais aussi sur toutes les valeurs de l’image d’un coup.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span># diviser par deux toutes les intensités de l&#39;image
+img = 0.5 * img
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span># Ex. 2
+# def creer_image...
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Accès-au-dernier,-avant-dernier…-élément-sur-un-axe">
+<h2>Accès au dernier, avant dernier… élément sur un axe<a class="headerlink" href="#Accès-au-dernier,-avant-dernier…-élément-sur-un-axe" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Comme nous savons qu’il y a <em>img.shape[1]</em> éléments dans une colonne, pour accéder au dernier élément de la première ligne, on pourrait écrire:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>print(img[0,img.shape[1]-1])
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0.0
+</pre></div></div>
+</div>
+<p>Mais cette instruction est longue et python nous offre avec sa syntaxe quelque chose de plus facile. Pour accéder au dernier élément de ma liste, je écrire l’index -1 (<code class="docutils literal notranslate"><span class="pre">img[0,-1]</span></code>), pour l’avant dernier -2 …</p>
+</div>
+<div class="section" id="Accès-et-manipulation-d’une-partie-de-l’image">
+<h2>Accès et manipulation d’une partie de l’image<a class="headerlink" href="#Accès-et-manipulation-d’une-partie-de-l’image" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Alors qu’il est possible de manipuler une image pixel par pixel, il est parfois souhaitable d’accéder à une partie de l’image englobant plusieurs pixelsce qu’on appelle une tranche. Voici un exemple de cette outil:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span># On peut définir une tranche d&#39;indices qui nous intéressent...
+# En donnant le l&#39;indice de début et de fin séparés d&#39;un double point:
+img[5,2:-3] = 255
+img[6:8,2:-3] = 128
+# Attention l&#39;élément avec l&#39;indice de fin n&#39;est pas inclut dans la tranche !
+
+# S&#39;il n&#39;y a pas d&#39;indice à gauche du :, la tranche commencera à l&#39;indice 0
+# S&#39;il n&#39;y a pas d&#39;indice à droite du :, la tranche finira au dernier indice
+img[:-1,15] = 255
+img[:,14] = 128
+
+plt.imshow(img, cmap=&#39;gray&#39;,vmin = 0, vmax = 255)
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_1_Images_23_0.png" src="../_images/notebooks_1_Images_23_0.png" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span># Ex. 4
+# img_degrade = ...
+# show
+# flip
+# show
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span># Ex. 5
+# def draw_line_h...
+# test drawline, show
+# def IsInImage
+# ...
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span># Ex. 6
+def draw_line_simple(img,x1,y1,x2,y2,gray_level):
+    for i in range(x1,x2+1):
+        j = round(y1 + (y2-y1)*(i-x1)/(x2-x1))
+        img[j,i] = gray_level
+
+
+
+</pre></div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="Exercice-7">
+<h3>Exercice 7<a class="headerlink" href="#Exercice-7" title="Lien permanent vers ce titre">¶</a></h3>
+<p><em>Utiliser les fonctions définies précédemment pour faire de l’art abstrait. Si vous n’avez pas d’inspiration vous pouvez essayer de recréer l’image suivante:</em></p>
+<p><img alt="art_abstrait" src="../_images/ex_art_abstrait.png" /></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="HistoireDeBugs.html" class="btn btn-neutral float-right" title="Histoire de bugs" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="0_MonPremierNotebook.html" class="btn btn-neutral float-left" title="Mon premier notebook" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, adame.
+
+    </p>
+  </div>
+    
+    
+    
+    Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

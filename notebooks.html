@@ -1,0 +1,233 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Python notebooks &mdash; Documentation TraitementImages 1.0</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Séquence d’activités" href="sequence.html" />
+    <link rel="prev" title="Bienvenue" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> TraitementImages
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Python notebooks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#presentation-generale">Présentation générale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#interaction">Interaction</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sequence.html">Séquence d’activités</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">TraitementImages</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="python-notebooks">
+<h1>Python notebooks<a class="headerlink" href="#python-notebooks" title="Lien permanent vers ce titre">¶</a></h1>
+<p>Manipuler des images en utilisant le langage python avec un éditeur de texte et le terminal implique de jongler avec beaucoup de fenêtres. Pour faciliter interaction avec nos programmes et les données que nous traiterons, nous utiliserons dans cette activité une interface web de python appelée notebook.</p>
+<div class="section" id="presentation-generale">
+<h2>Présentation générale<a class="headerlink" href="#presentation-generale" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Un notebook nous permettra en effet d’écrire notre programme, de l’exécuter ainsi que de visualiser des données sur une seule page. Mais ce n’est pas tout: alors que dans un fichier python l’élément de base est une instruction, dans un notebook l’unité de base est une cellule. Une cellule peut être définie dans différents formats: soit elle contient des instructions (cellule de code), soit elle contient du texte en format markdown.
+On pourra ainsi travailler sur un programme tout en l’illustrant pour le rendre plus compréhensible.</p>
+<div class="figure align-default" id="id1">
+<img alt="_images/FirstNotebook.png" src="_images/FirstNotebook.png" />
+<p class="caption"><span class="caption-text"><strong>Figure 1:</strong> Interface Jupyter notebook avec une cellule de code et une cellule de texte.</span><a class="headerlink" href="#id1" title="Lien permanent vers cette image">¶</a></p>
+</div>
+<p>Un autre avantage du format en cellules est que chaque cellule peut être exécutée individuellement ce qui est très utile pour débugger et pour ne pas gaspiller de la puissance de calcul.</p>
+</div>
+<div class="section" id="interaction">
+<h2>Interaction<a class="headerlink" href="#interaction" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Pour utiliser les notebooks, il est possible d’installer le logiciel jupyter notebook en local sur votre ordinateur. Les instructions détaillées pour le faire dépassent le cadre de ce site. De plus vous pourrez interagir avec les notebooks disponibles sur ce site sans installer quoi que ce soit sur votre ordinateur. La première option pour cela sera d’utiliser le bouton binder présente dans les notebooks de ce site. Cela créera un espace de travail sur un serveur à distance où vous pourrez modifier et exécuter le notebook.</p>
+<p>Une autre méthode, si vousu avez un compte gmail, est d’utiliser l’outil colab de google qui permet d’exécuter gratuitement sur leur serveur votre code. Vous aurez alors l’avantage d’avoir votre notebook sauvegardé sur votre drive. Vous aurez alors même à disposition des GPUs pour faire des calculs assez intenses.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="sequence.html" class="btn btn-neutral float-right" title="Séquence d’activités" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Bienvenue" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, adame.
+
+    </p>
+  </div>
+    
+    
+    
+    Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
